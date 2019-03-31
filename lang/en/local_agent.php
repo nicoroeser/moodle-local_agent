@@ -24,6 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['agenthello'] = 'Hello! I am your digital learning assistant. You can ask me things. But I will not do your homework.';
 $string['configfoolsonly'] = 'Only enable on April 1st';
 $string['configfoolsonly_desc'] = 'Whether the plugin shall only be active on April 1st (-04-01), in the user’s time zone.
 If (and only if) this option is disabled, the plugin is always active.';

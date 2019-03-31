@@ -23,7 +23,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_agent';
-$plugin->version = 2019033100;
+$plugin->version = 2019040100;
 $plugin->release = '0.0.1';
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->requires = 2018051700;  // Moodle 3.5.0 (arbitrarily chosen, TODO)

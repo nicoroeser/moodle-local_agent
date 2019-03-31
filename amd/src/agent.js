@@ -19,13 +19,22 @@
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(['local_agent/clippy'], function(clippy) {
+define(['local_agent/clippy', 'core/str'], function(clippy, str) {
 
     return {
         init: function() {
             clippy.BASE_PATH = '/local/agent/lib/clippy.js/agents/'; //XXX
             clippy.load('Clippy', function(agent) {
                 agent.show();
+
+                setTimeout(function() {
+                    agent.animate();
+                    setTimeout(function() {
+                        str.get_string('agenthello', 'local_agent').then(function(txt) {
+                            agent.speak(txt);
+                        });
+                    }, 2000);
+                }, 6000);
             });
         },
     };
