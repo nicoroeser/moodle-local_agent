@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return Whether the plugin is enabled.
  */
 function local_agent_isenabled() {
-    if (get_config('local_agent', 'foolsonly') === 0) {
+    if (get_config('local_agent', 'foolsonly') === '0') {
         return true;
     }
 
