@@ -23,7 +23,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * @return Whether the plugin is enabled.
+ * @return Whether the plugin is enabled by its configuration.
  */
 function local_agent_isenabled() {
     if (get_config('local_agent', 'foolsonly') === '0') {
@@ -36,12 +36,27 @@ function local_agent_isenabled() {
 }
 
 /**
+ * @return Whether the plugin is to be included in the page which has been requested.
+ */
+function local_agent_istobeshown() {
+    if (!local_agent_isenabled()) {
+        return false;
+    }
+
+    if (!isloggedin()) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * Hook which inserts the style sheets.
  */
 function local_agent_before_standard_html_head() {
     global $PAGE;
 
-    if (local_agent_isenabled()) {
+    if (local_agent_istobeshown()) {
         $PAGE->requires->css('/local/agent/lib/clippy.js/build/clippy.css');
     }
 
@@ -54,7 +69,7 @@ function local_agent_before_standard_html_head() {
 function local_agent_before_footer() {
     global $PAGE;
 
-    if (local_agent_isenabled()) {
+    if (local_agent_istobeshown()) {
         $PAGE->requires->js_call_amd('local_agent/agent', 'init');
     }
 }
